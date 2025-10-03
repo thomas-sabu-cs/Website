@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thomas Sabu | Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <div id="particles-js"></div>
+  
+  <button id="dark-mode-toggle" class="dark-mode-toggle">🌙</button>
+  
+  <nav class="glass-nav">
+    <div class="nav-content">
+      <div class="logo">TS</div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="hamburger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero page-transition">
+    <div class="hero-content">
+      <h1 class="gradient-text reveal">Hi, I'm Thomas Sabu</h1>
+      <p class="subtitle reveal">Computer Science Student | Aspiring Software Engineer | Problem Solver</p>
+      <div class="cta-container reveal">
+        <a href="projects.html" class="animated-button">See My Projects</a>
+        <a href="about.html" class="animated-button secondary">About Me</a>
+      </div>
+      <div class="scroll-indicator">
+        <div class="mouse">
+          <div class="wheel"></div>
+        </div>
+        <div>
+          <span class="scroll-text">Scroll Down</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="skills-section">
+      <h2 class="section-title reveal">My Skills</h2>
+      <div class="skills-container">
+        <div class="skill-card reveal">
+          <i class="fas fa-code"></i>
+          <h3>Programming</h3>
+          <p>Python, C++, Java, SQL</p>
+        </div>
+        <div class="skill-card reveal">
+          <i class="fas fa-globe"></i>
+          <h3>Web Development</h3>
+          <p>HTML, CSS, JavaScript, Vue.js</p>
+        </div>
+        <div class="skill-card reveal">
+          <i class="fas fa-brain"></i>
+          <h3>Machine Learning</h3>
+          <p>scikit-learn, TensorFlow, pandas</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="featured-projects">
+      <h2 class="section-title reveal">Featured Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card reveal">
+          <div class="project-image" style="background-image: url('https://source.unsplash.com/random/300x200/?recipe')"></div>
+          <div class="project-content">
+            <h3>Smart Recipe Finder</h3>
+            <p>A recipe app that recommends recipes based on user-provided ingredients.</p>
+            <div class="project-tags">
+              <span>Python</span>
+              <span>Flask</span>
+              <span>Vue.js</span>
+            </div>
+            <a href="projects.html" class="project-link">Learn More</a>
+          </div>
+        </div>
+        <div class="project-card reveal">
+          <div class="project-image" style="background-image: url('https://source.unsplash.com/random/300x200/?car')"></div>
+          <div class="project-content">
+            <h3>Car Price Prediction</h3>
+            <p>ML model to predict used car prices based on various features.</p>
+            <div class="project-tags">
+              <span>Python</span>
+              <span>scikit-learn</span>
+              <span>XGBoost</span>
+            </div>
+            <a href="projects.html" class="project-link">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="center-button reveal">
+        <a href="projects.html" class="animated-button">View All Projects</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="glass-footer">
+    <div class="footer-content">
+      <div class="footer-logo">TS</div>
+      <div class="social-links">
+        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+      </div>
+      <p>&copy; 2025 Thomas Sabu. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
