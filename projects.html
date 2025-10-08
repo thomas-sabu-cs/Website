@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,12 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+
 <body>
   <div id="particles-js"></div>
-  
+
   <button id="dark-mode-toggle" class="dark-mode-toggle">🌙</button>
-  
+
   <nav class="glass-nav">
     <div class="nav-content">
       <div class="logo">TS</div>
@@ -42,14 +44,47 @@
     </div>
 
     <div class="projects-grid">
+      <div class="project-card large reveal" data-category="ml">
+        <div class="project-image" style="background-image: url('photos/career-skill-recommender-image.png')"></div>
+        <div class="project-content">
+          <h3>Career-Skill Recommender System</h3>
+          <p>
+            An AI-powered tool that recommends relevant job roles based on a user’s skills and highlights missing skills
+            for desired roles.
+            Implements TF‑IDF + cosine similarity on skills extracted from job postings.
+          </p>
+          <div class="project-tags">
+            <span>Python</span>
+            <span>scikit-learn</span>
+            <span>pandas</span>
+            <span>NumPy</span>
+            <span>TF‑IDF</span>
+            <span>Cosine Similarity</span>
+            <span>Jupyter</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/thomas-sabu-cs/career-skill-recommender" class="project-link" target="_blank"
+              rel="noopener">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+            <a href="https://colab.research.google.com/.../01_mvp_recommender.ipynb" class="project-link"
+              target="_blank" rel="noopener">
+              <i class="fas fa-external-link-alt"></i> Demo/Notebook
+            </a>
+          </div>
+        </div>
+      </div>
+
       <div class="project-card large reveal" data-category="web">
-        <div class="project-image" style="background-image: url('https://source.unsplash.com/random/600x400/?recipe')"></div>
+        <div class="project-image" style="background-image: url('https://source.unsplash.com/random/600x400/?recipe')">
+        </div>
         <div class="project-content">
           <h3>Smart Recipe Finder</h3>
           <p>
             Developed a recipe app that searches and recommends recipes based on user-provided ingredients.
             Designed and implemented a recommendation algorithm using Python and Flask.
-            Created a simple, responsive interface using HTML, CSS, and JavaScript and enhanced user interface using Vue.js
+            Created a simple, responsive interface using HTML, CSS, and JavaScript and enhanced user interface using
+            Vue.js
           </p>
           <div class="project-tags">
             <span>Python</span>
@@ -66,13 +101,16 @@
       </div>
 
       <div class="project-card large reveal" data-category="ml">
-        <div class="project-image" style="background-image: url('https://source.unsplash.com/random/600x400/?car')"></div>
+        <div class="project-image" style="background-image: url('https://source.unsplash.com/random/600x400/?car')">
+        </div>
         <div class="project-content">
           <h3>Car Price Prediction using Machine Learning</h3>
           <p>
-            Developed a machine learning model to predict used car prices based on various features such as year, mileage, fuel type, transmission, and brand.
+            Developed a machine learning model to predict used car prices based on various features such as year,
+            mileage, fuel type, transmission, and brand.
             Performed data preprocessing, including handling categorical variables and scaling numerical features.
-            Built and evaluated multiple regression models, including Linear Regression, XGBoost, Random Forest, and Ridge Regression, achieving a maximum test R-squared of 0.73.
+            Built and evaluated multiple regression models, including Linear Regression, XGBoost, Random Forest, and
+            Ridge Regression, achieving a maximum test R-squared of 0.73.
           </p>
           <div class="project-tags">
             <span>Python</span>
@@ -89,7 +127,8 @@
       </div>
 
       <div class="project-card reveal" data-category="other">
-        <div class="project-image" style="background-image: url('https://source.unsplash.com/random/300x200/?hydroponic')"></div>
+        <div class="project-image"
+          style="background-image: url('https://source.unsplash.com/random/300x200/?hydroponic')"></div>
         <div class="project-content">
           <h3>Hydroponic System</h3>
           <p>Led team of 5 in constructing a hydroponic system for indoor plant growth without natural sunlight.</p>
@@ -108,8 +147,14 @@
     <div class="footer-content">
       <div class="footer-logo">TS</div>
       <div class="social-links">
-        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
-        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/thomas-sabu-cs" class="social-icon" target="_blank" rel="noopener"
+          aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/thomas-sabu" class="social-icon" target="_blank" rel="noopener"
+          aria-label="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
         <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
       </div>
       <p>&copy; 2025 Thomas Sabu. All rights reserved.</p>
@@ -119,4 +164,5 @@
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script src="script.js"></script>
 </body>
+
 </html>
