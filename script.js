@@ -23,21 +23,49 @@ document.addEventListener('DOMContentLoaded', function() {
   // Dark mode toggle
   const darkModeToggle = document.getElementById('dark-mode-toggle');
   
+  // Favicons: switch set based on theme (light/dark)
+  function setFaviconsByTheme(theme) {
+    const dir = theme === 'light' ? 'light' : 'dark';
+    const version = theme; // cache-bust on theme change
+
+    const map = {
+      'favicon-16':  `photos/favicon/${dir}/favicon-16x16.png`,
+      'favicon-32':  `photos/favicon/${dir}/favicon-32x32.png`,
+      'favicon-192': `photos/favicon/${dir}/android-chrome-192x192.png`,
+      'favicon-512': `photos/favicon/${dir}/android-chrome-512x512.png`,
+      'apple-icon':  `photos/favicon/${dir}/apple-touch-icon.png`,
+      'favicon-ico': `photos/favicon/${dir}/favicon.ico`,
+    };
+
+    Object.entries(map).forEach(([id, href]) => {
+      const el = document.getElementById(id);
+      if (el) el.setAttribute('href', `${href}?v=${version}`);
+    });
+  }
+
   // Check for saved dark mode preference
   if (localStorage.getItem('darkMode') === 'enabled') {
     document.body.classList.add('dark-mode');
     darkModeToggle.textContent = '☀️';
   }
+
+  // Set initial favicons: prefer saved, else system preference
+  const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const initialTheme = (localStorage.getItem('darkMode') === 'enabled') ? 'dark' : (systemDark ? 'dark' : 'light');
+  setFaviconsByTheme(initialTheme);
   
   darkModeToggle.addEventListener('click', function() {
     document.body.classList.toggle('dark-mode');
     
-    if (document.body.classList.contains('dark-mode')) {
+    const isDark = document.body.classList.contains('dark-mode');
+    if (isDark) {
       this.textContent = '☀️';
       localStorage.setItem('darkMode', 'enabled');
+      setFaviconsByTheme('dark');
     } else {
       this.textContent = '🌙';
       localStorage.setItem('darkMode', null);
+      setFaviconsByTheme('light');
     }
   });
 
@@ -110,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-// Creative Coding Viewer
+  // Creative Coding Viewer
   const projectSelect = document.getElementById('projectSelect');
   const projectFrame = document.getElementById('projectFrame');
   const framePlaceholder = document.getElementById('framePlaceholder');
@@ -160,4 +188,3 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
-
