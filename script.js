@@ -109,4 +109,55 @@ document.addEventListener('DOMContentLoaded', function() {
       alert('Thank you for your message! This is a demo form - in a real website, your message would be sent to the website owner.');
     });
   }
+
+// Creative Coding Viewer
+  const projectSelect = document.getElementById('projectSelect');
+  const projectFrame = document.getElementById('projectFrame');
+  const framePlaceholder = document.getElementById('framePlaceholder');
+  const openExternal = document.getElementById('openExternal');
+
+  if (projectSelect && projectFrame) {
+    // Restore last viewed project
+    const savedProjectUrl = localStorage.getItem('cc_last_project_url');
+    if (savedProjectUrl) {
+      const opt = Array.from(projectSelect.options).find(o => o.value === savedProjectUrl);
+      if (opt) {
+        projectSelect.value = savedProjectUrl;
+        projectFrame.src = savedProjectUrl;
+        projectFrame.style.display = 'block';
+        framePlaceholder.style.display = 'none';
+        openExternal.href = savedProjectUrl;
+        openExternal.style.display = 'inline-block';
+      }
+    }
+
+    projectSelect.addEventListener('change', () => {
+      const url = projectSelect.value;
+      if (!url) {
+        projectFrame.removeAttribute('src');
+        projectFrame.style.display = 'none';
+        framePlaceholder.style.display = 'grid';
+        openExternal.style.display = 'none';
+        localStorage.removeItem('cc_last_project_url');
+        return;
+      }
+      // Set iframe
+      projectFrame.src = url;
+      projectFrame.style.display = 'block';
+      framePlaceholder.style.display = 'none';
+      // External link
+      openExternal.href = url;
+      openExternal.style.display = 'inline-block';
+      // Persist
+      localStorage.setItem('cc_last_project_url', url);
+    });
+
+    // Handle iframe load errors gracefully (optional)
+    projectFrame.addEventListener('error', () => {
+      projectFrame.style.display = 'none';
+      framePlaceholder.style.display = 'grid';
+      framePlaceholder.textContent = 'Could not load the project. Check that GitHub Pages is enabled and the folder has an index.html';
+    });
+  }
 });
+
