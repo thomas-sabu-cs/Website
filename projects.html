@@ -42,7 +42,34 @@
       <button class="filter-btn" data-filter="ml">Machine Learning</button>
       <button class="filter-btn" data-filter="other">Other</button>
     </div>
-
+  <section class="project-viewer reveal">
+    <h2 class="section-title">Creative Coding Viewer</h2>
+  
+    <div class="viewer-controls">
+      <label for="projectSelect">Choose a project:</label>
+      <select id="projectSelect">
+        <option value="">-- Select a project --</option>
+        <!-- Replace with your actual folders once Pages is enabled -->
+        <option value="https://thomas-sabu-cs.github.io/Creative-Coding-Projects/Doge%20Game/">Doge Game</option>
+        <!-- Add more here -->
+      </select>
+  
+      <a id="openExternal" class="animated-button secondary" href="#" target="_blank" rel="noopener" style="display:none;">
+        <i class="fas fa-external-link-alt"></i> Open in new tab
+      </a>
+    </div>
+  
+    <div class="viewer-frame-wrap">
+      <iframe id="projectFrame" title="Creative Coding Project Preview" loading="lazy"></iframe>
+      <div id="framePlaceholder" class="frame-placeholder">
+        Select a project to preview it here.
+      </div>
+    </div>
+  
+    <p class="viewer-note">
+      Note: Projects load from GitHub Pages. If a project doesn’t load, make sure it has an index.html and GitHub Pages is enabled.
+    </p>
+  </section>
     <div class="projects-grid">
       <div class="project-card large reveal" data-category="ml">
         <div class="project-image" style="background-image: url('photos/career-skill-recommender-image.png')"></div>
@@ -166,3 +193,4 @@
 </body>
 
 </html>
+
