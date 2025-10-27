@@ -5,8 +5,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Thomas Sabu | Portfolio</title>
-  <!-- Favicons: system preference -->
-  <!-- Light -->
+
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+  <!-- SEO -->
+  <meta name="description" content="Thomas Sabu — CS student and aspiring software engineer. Portfolio showcasing ML and web projects like Smart Recipe Finder and Career‑Skill Recommender.">
+  <meta property="og:title" content="Thomas Sabu — Portfolio">
+  <meta property="og:description" content="ML + web projects with concise case studies and code.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://thomas-sabu-cs.github.io/Website/">
+  <link rel="canonical" href="https://thomas-sabu-cs.github.io/Website/">
+
+  <!-- Light Mode Favicons-->
   <link rel="icon" href="photos/favicon/light/favicon-32x32.png" sizes="16x16" type="image/png" media="(prefers-color-scheme: light)">
   <link rel="icon" href="photos/favicon/light/favicon-32x32.png" sizes="32x32" type="image/png" media="(prefers-color-scheme: light)">
   <link rel="icon" href="photos/favicon/light/android-chrome-192x192.png" sizes="192x192" type="image/png" media="(prefers-color-scheme: light)">
@@ -14,22 +25,26 @@
   <link rel="apple-touch-icon" href="photos/favicon/light/apple-touch-icon.png" sizes="180x180" media="(prefers-color-scheme: light)">
   <link rel="icon" href="photos/favicon/light/favicon.ico" type="image/x-icon" media="(prefers-color-scheme: light)">
 
-  <!-- Dark -->
+  <!-- Dark Mode Favicons -->
   <link rel="icon" href="photos/favicon/dark/favicon-16x16.png" sizes="16x16" type="image/png" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="photos/favicon/dark/favicon-32x32.png" sizes="32x32" type="image/png" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="photos/favicon/dark/android-chrome-192x192.png" sizes="192x192" type="image/png" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="photos/favicon/dark/android-chrome-512x512.png" sizes="512x512" type="image/png" media="(prefers-color-scheme: dark)">
   <link rel="apple-touch-icon" href="photos/favicon/dark/apple-touch-icon.png" sizes="180x180" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="photos/favicon/dark/favicon.ico" type="image/x-icon" media="(prefers-color-scheme: dark)">
-  <!-- Favicons: current set (updated by JS on theme toggle) -->
+
   <link id="favicon-16" rel="icon" href="photos/favicon/dark/favicon-16x16.png" sizes="16x16" type="image/png">
   <link id="favicon-32" rel="icon" href="photos/favicon/dark/favicon-32x32.png" sizes="32x32" type="image/png">
   <link id="favicon-192" rel="icon" href="photos/favicon/dark/android-chrome-192x192.png" sizes="192x192" type="image/png">
   <link id="favicon-512" rel="icon" href="photos/favicon/dark/android-chrome-512x512.png" sizes="512x512" type="image/png">
   <link id="apple-icon" rel="apple-touch-icon" href="photos/favicon/dark/apple-touch-icon.png" sizes="180x180">
   <link id="favicon-ico" rel="icon" href="photos/favicon/dark/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="style.css"></noscript>
+
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
 </head>
 
 <body>
@@ -46,7 +61,7 @@
         <li><a href="projects.html">Projects</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-      <div class="hamburger">
+      <div class="hamburger" aria-label="Toggle navigation" role="button" tabindex="0">
         <div class="line"></div>
         <div class="line"></div>
         <div class="line"></div>
@@ -78,17 +93,19 @@
       <h2 class="section-title reveal">My Skills</h2>
       <div class="skills-container">
         <div class="skill-card reveal">
-          <i class="fas fa-code"></i>
+          <i class="fas fa-code" aria-hidden="true"></i>
           <h3>Programming</h3>
+          <!-- Note to self to add programming skills here!!!-->
           <p>Python, C++, Java, SQL</p>
         </div>
         <div class="skill-card reveal">
-          <i class="fas fa-globe"></i>
+          <i class="fas fa-globe" aria-hidden="true"></i>
           <h3>Web Development</h3>
+          <!-- Add new web libraries learned here!!! -->
           <p>HTML, CSS, JavaScript, Vue.js</p>
         </div>
         <div class="skill-card reveal">
-          <i class="fas fa-brain"></i>
+          <i class="fas fa-brain" aria-hidden="true"></i>
           <h3>Machine Learning</h3>
           <p>scikit-learn, TensorFlow, pandas</p>
         </div>
@@ -99,8 +116,7 @@
       <h2 class="section-title reveal">Featured Projects</h2>
       <div class="projects-grid">
         <div class="project-card reveal">
-          <div class="project-image"
-            style="background-image: url('https://source.unsplash.com/random/300x200/?recipe')"></div>
+          <div class="project-image" style="background-image: url('https://source.unsplash.com/random/300x200/?recipe')"></div>
           <div class="project-content">
             <h3>Smart Recipe Finder</h3>
             <p>A recipe app that recommends recipes based on user-provided ingredients.</p>
@@ -109,26 +125,26 @@
               <span>Flask</span>
               <span>Vue.js</span>
             </div>
-            <a href="projects.html" class="project-link">Learn More</a>
+            <a href="projects.html#smart-recipe-finder" class="project-link">Smart Recipe Finder case study</a>
           </div>
         </div>
         <div class="project-card reveal">
           <div class="project-image" style="background-image: url('photos/career-skill-recommender-image.png')"></div>
-            <div class="project-content">
-              <h3>Career-Skill Recommender System</h3>
-              <p>Recommends job roles from your skills and surfaces missing skills using TF‑IDF + cosine similarity.</p>
-              <div class="project-tags">
-                <span>Python</span>
-                <span>scikit-learn</span>
-                <span>TF‑IDF</span>
-              </div>
-              <a href="projects.html" class="project-link">Learn More</a>
+          <div class="project-content">
+            <h3>Career-Skill Recommender System</h3>
+            <p>Recommends job roles from your skills and surfaces missing skills using TF‑IDF + cosine similarity.</p>
+            <div class="project-tags">
+              <span>Python</span>
+              <span>scikit-learn</span>
+              <span>TF‑IDF</span>
             </div>
+            <a href="projects.html#career-skill-recommender" class="project-link">Career‑Skill Recommender case study</a>
           </div>
         </div>
-        <div class="center-button reveal">
-          <a href="projects.html" class="animated-button">View All Projects</a>
-        </div>
+      </div>
+      <div class="center-button reveal">
+        <a href="projects.html" class="animated-button">View All Projects</a>
+      </div>
     </section>
   </main>
 
@@ -136,35 +152,22 @@
     <div class="footer-content">
       <div class="footer-logo">TS</div>
       <div class="social-links">
-        <a href="https://github.com/thomas-sabu-cs" class="social-icon" target="_blank" rel="noopener"
-          aria-label="GitHub">
-          <i class="fab fa-github"></i>
+        <a href="https://github.com/thomas-sabu-cs" class="social-icon" target="_blank" rel="noopener" aria-label="GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i>
         </a>
-        <a href="https://www.linkedin.com/in/thomas-sabu" class="social-icon" target="_blank" rel="noopener"
-          aria-label="LinkedIn">
-          <i class="fab fa-linkedin"></i>
+        <a href="https://www.linkedin.com/in/thomas-sabu" class="social-icon" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
         </a>
-        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-icon" aria-label="Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
       </div>
       <p>&copy; 2025 Thomas Sabu. All rights reserved.</p>
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-  <script src="script.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script defer src="script.js"></script>
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
