@@ -5,6 +5,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projects | Thomas Sabu</title>
+
+  <!-- Performance hints -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+  <!-- SEO -->
+  <meta name="description" content="Projects by Thomas Sabu: ML and web development case studies including CNN digit recognition, Career‑Skill Recommender, and Smart Recipe Finder.">
+  <meta property="og:title" content="Projects — Thomas Sabu">
+  <meta property="og:description" content="ML + web projects with concise case studies and code.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://thomas-sabu-cs.github.io/Website/projects.html">
+  <link rel="canonical" href="https://thomas-sabu-cs.github.io/Website/projects.html">
+
   <!-- Favicons: system preference -->
   <!-- Light -->
   <link rel="icon" href="photos/favicon/light/favicon-32x32.png" sizes="16x16" type="image/png" media="(prefers-color-scheme: light)">
@@ -21,6 +34,7 @@
   <link rel="icon" href="photos/favicon/dark/android-chrome-512x512.png" sizes="512x512" type="image/png" media="(prefers-color-scheme: dark)">
   <link rel="apple-touch-icon" href="photos/favicon/dark/apple-touch-icon.png" sizes="180x180" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="photos/favicon/dark/favicon.ico" type="image/x-icon" media="(prefers-color-scheme: dark)">
+
   <!-- Favicons: current set (updated by JS on theme toggle) -->
   <link id="favicon-16" rel="icon" href="photos/favicon/dark/favicon-16x16.png" sizes="16x16" type="image/png">
   <link id="favicon-32" rel="icon" href="photos/favicon/dark/favicon-32x32.png" sizes="32x32" type="image/png">
@@ -28,8 +42,14 @@
   <link id="favicon-512" rel="icon" href="photos/favicon/dark/android-chrome-512x512.png" sizes="512x512" type="image/png">
   <link id="apple-icon" rel="apple-touch-icon" href="photos/favicon/dark/apple-touch-icon.png" sizes="180x180">
   <link id="favicon-ico" rel="icon" href="photos/favicon/dark/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <!-- CSS: preload -->
+  <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="style.css"></noscript>
+
+  <!-- Font Awesome: non-blocking -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
 </head>
 
 <body>
@@ -46,7 +66,7 @@
         <li><a href="projects.html" class="active">Projects</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-      <div class="hamburger">
+      <div class="hamburger" aria-label="Toggle navigation" role="button" tabindex="0">
         <div class="line"></div>
         <div class="line"></div>
         <div class="line"></div>
@@ -65,66 +85,68 @@
       <button class="filter-btn" data-filter="ml">Machine Learning</button>
       <button class="filter-btn" data-filter="other">Other</button>
     </div>
-  <section class="project-viewer reveal">
-    <h2 class="section-title">Creative Coding Viewer</h2>
-  
-    <div class="viewer-controls">
-      <label for="projectSelect">Choose a project:</label>
-      <select id="projectSelect">
-        <option value="">-- Select a project --</option>
-        <!--  Note to self -- Add new projects here and make sure they have an index.html -->
-        <option value="https://thomas-sabu-cs.github.io/Creative-Coding-Projects/Doge%20Game/">Doge Game</option>
-        <option value="https://thomas-sabu-cs.github.io/Creative-Coding-Projects/p5js%20Stuff/Perlin%20Flow%20Field">Perlin Flow Field</option>
-        <option value="https://thomas-sabu-cs.github.io/Creative-Coding-Projects/p5js%20Stuff/Spinning%20Squares">Spinning Squares</option>
-        <option value="https://thomas-sabu-cs.github.io/Creative-Coding-Projects/p5js%20Stuff/Problem%20Set%20Four">Problem Set 4</option>
-        <option value="https://thomas-sabu-cs.github.io/Creative-Coding-Projects/Ball%20Game%20Folder/">Ball Game</option>
-        <option value="https://thomas-sabu-cs.github.io/Creative-Coding-Projects/Unit%201/Animated%20Roller/">Animated Roller</option>
-      </select>
-  
-      <a id="openExternal" class="animated-button secondary" href="#" target="_blank" rel="noopener" style="display:none;">
-        <i class="fas fa-external-link-alt"></i> Open in new tab
-      </a>
-    </div>
-  
-    <div class="viewer-frame-wrap">
-      <iframe id="projectFrame" title="Creative Coding Project Preview" loading="lazy"></iframe>
-      <div id="framePlaceholder" class="frame-placeholder">
-        Select a project to preview it here.
+
+    <section class="project-viewer reveal">
+      <h2 class="section-title">Creative Coding Viewer</h2>
+
+      <div class="viewer-controls">
+        <label for="projectSelect">Choose a project:</label>
+        <select id="projectSelect">
+          <option value="">-- Select a project --</option>
+          <!--  Note to self -- Add new projects here and make sure they have an index.html -->
+          <option value="https://thomas-sabu-cs.github.io/Creative-Coding-Projects/Doge%20Game/">Doge Game</option>
+          <option value="https://thomas-sabu-cs.github.io/Creative-Coding-Projects/p5js%20Stuff/Perlin%20Flow%20Field">Perlin Flow Field</option>
+          <option value="https://thomas-sabu-cs.github.io/Creative-Coding-Projects/p5js%20Stuff/Spinning%20Squares">Spinning Squares</option>
+          <option value="https://thomas-sabu-cs.github.io/Creative-Coding-Projects/p5js%20Stuff/Problem%20Set%20Four">Problem Set 4</option>
+          <option value="https://thomas-sabu-cs.github.io/Creative-Coding-Projects/Ball%20Game%20Folder/">Ball Game</option>
+          <option value="https://thomas-sabu-cs.github.io/Creative-Coding-Projects/Unit%201/Animated%20Roller/">Animated Roller</option>
+        </select>
+
+        <a id="openExternal" class="animated-button secondary" href="#" target="_blank" rel="noopener" style="display:none;">
+          <i class="fas fa-external-link-alt" aria-hidden="true"></i> Open in new tab
+        </a>
       </div>
-    </div>
-  
-    <p class="viewer-note">
-      Note: Projects load from GitHub Pages. If you'd like to look at the backend for any of these projects, they will be in my GitHub (linked to this website).
-    </p>
-  </section>
+
+      <div class="viewer-frame-wrap">
+        <iframe id="projectFrame" title="Creative Coding Project Preview" loading="lazy"></iframe>
+        <div id="framePlaceholder" class="frame-placeholder">
+          Select a project to preview it here.
+        </div>
+      </div>
+
+      <p class="viewer-note">
+        Note: Projects load from GitHub Pages. If you'd like to look at the backend for any of these projects, they will be in my GitHub (linked to this website).
+      </p>
+    </section>
+
     <div class="projects-grid">
-    <div class="project-card large reveal" data-category="ml">
-    <div class="project-image" style="background-image: url('photos/Project Background Images/my_sample_predictions.png')"></div>
-    <div class="project-content">
-      <h3>Handwritten Digit Recognition with CNN</h3>
-        <p>
-      Built and trained a Convolutional Neural Network on the MNIST dataset to classify handwritten digits (0–9).
-      Implemented data normalization and Dropout regularization, and evaluated performance with accuracy and a confusion matrix.
-      Includes training and inference scripts plus a simple demo for predicting from images.
-        </p>
-    <div class="project-tags">
-      <span>Python</span>
-      <span>TensorFlow/Keras</span>
-      <span>CNN</span>
-      <span>MNIST</span>
-    </div>
-    <div class="project-links">
-      <a href="https://github.com/thomas-sabu-cs/Handwritten-Digit-Recognition-with-CNN" class="project-link" target="_blank" rel="noopener">
-        <i class="fab fa-github"></i> GitHub
-      </a>
-<!-- Note to self to add demo here once Render is setup or the google cloud thing--> 
-    </div>
-  </div>
-</div>
+      <div class="project-card large reveal" data-category="ml">
+        <div class="project-image" style="background-image: url('photos/Project Background Images/my_sample_predictions.png')"></div>
+        <div class="project-content">
+          <h3>Handwritten Digit Recognition with CNN</h3>
+          <p>
+            Built and trained a Convolutional Neural Network on the MNIST dataset to classify handwritten digits (0–9).
+            Implemented data normalization and Dropout regularization, and evaluated performance with accuracy and a confusion matrix.
+            Includes training and inference scripts plus a simple demo for predicting from images.
+          </p>
+          <div class="project-tags">
+            <span>Python</span>
+            <span>TensorFlow/Keras</span>
+            <span>CNN</span>
+            <span>MNIST</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/thomas-sabu-cs/Handwritten-Digit-Recognition-with-CNN" class="project-link" target="_blank" rel="noopener" aria-label="Handwritten Digit Recognition GitHub repository">
+              <i class="fab fa-github" aria-hidden="true"></i> GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
       <div class="project-card large reveal" data-category="ml">
         <div class="project-image" style="background-image: url('photos/Project Background Images/career-skill-recommender-image.png')"></div>
         <div class="project-content">
-          <h3>Career-Skill Recommender System</h3>
+          <h3 id="career-skill-recommender">Career-Skill Recommender System</h3>
           <p>
             An AI-powered tool that recommends relevant job roles based on a user’s skills and highlights missing skills
             for desired roles.
@@ -140,28 +162,24 @@
             <span>Jupyter</span>
           </div>
           <div class="project-links">
-            <a href="https://github.com/thomas-sabu-cs/career-skill-recommender" class="project-link" target="_blank"
-              rel="noopener">
-              <i class="fab fa-github"></i> GitHub
+            <a href="https://github.com/thomas-sabu-cs/career-skill-recommender" class="project-link" target="_blank" rel="noopener" aria-label="Career-Skill Recommender GitHub repository">
+              <i class="fab fa-github" aria-hidden="true"></i> GitHub
             </a>
-            <a href="https://colab.research.google.com/.../01_mvp_recommender.ipynb" class="project-link"
-              target="_blank" rel="noopener">
-              <i class="fas fa-external-link-alt"></i> Demo/Notebook
+            <a href="https://colab.research.google.com/.../01_mvp_recommender.ipynb" class="project-link" target="_blank" rel="noopener" aria-label="Career-Skill Recommender notebook demo">
+              <i class="fas fa-external-link-alt" aria-hidden="true"></i> Demo/Notebook
             </a>
           </div>
         </div>
       </div>
 
       <div class="project-card large reveal" data-category="web">
-        <div class="project-image" style="background-image: url('https://source.unsplash.com/random/600x400/?recipe')">
-        </div>
+        <div class="project-image" style="background-image: url('https://source.unsplash.com/random/600x400/?recipe')"></div>
         <div class="project-content">
-          <h3>Smart Recipe Finder</h3>
+          <h3 id="smart-recipe-finder">Smart Recipe Finder</h3>
           <p>
             Developed a recipe app that searches and recommends recipes based on user-provided ingredients.
             Designed and implemented a recommendation algorithm using Python and Flask.
-            Created a simple, responsive interface using HTML, CSS, and JavaScript and enhanced user interface using
-            Vue.js
+            Created a simple, responsive interface using HTML, CSS, and JavaScript and enhanced user interface using Vue.js
           </p>
           <div class="project-tags">
             <span>Python</span>
@@ -171,15 +189,14 @@
             <span>JavaScript</span>
           </div>
           <div class="project-links">
-            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-            <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+            <a href="#" class="project-link" aria-label="Smart Recipe Finder live demo"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Live Demo</a>
+            <a href="#" class="project-link" aria-label="Smart Recipe Finder GitHub repository"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
           </div>
         </div>
       </div>
 
       <div class="project-card large reveal" data-category="ml">
-        <div class="project-image" style="background-image: url('https://source.unsplash.com/random/600x400/?car')">
-        </div>
+        <div class="project-image" style="background-image: url('https://source.unsplash.com/random/600x400/?car')"></div>
         <div class="project-content">
           <h3>Car Price Prediction using Machine Learning</h3>
           <p>
@@ -197,15 +214,14 @@
             <span>XGBoost</span>
           </div>
           <div class="project-links">
-            <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
-            <a href="#" class="project-link"><i class="fas fa-file-alt"></i> Report</a>
+            <a href="#" class="project-link" aria-label="Car Price Prediction GitHub repository"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
+            <a href="#" class="project-link" aria-label="Car Price Prediction project report"><i class="fas fa-file-alt" aria-hidden="true"></i> Report</a>
           </div>
         </div>
       </div>
 
       <div class="project-card reveal" data-category="other">
-        <div class="project-image"
-          style="background-image: url('https://source.unsplash.com/random/300x200/?hydroponic')"></div>
+        <div class="project-image" style="background-image: url('https://source.unsplash.com/random/300x200/?hydroponic')"></div>
         <div class="project-content">
           <h3>Hydroponic System</h3>
           <p>Led team of 5 in constructing a hydroponic system for indoor plant growth without natural sunlight.</p>
@@ -224,34 +240,23 @@
     <div class="footer-content">
       <div class="footer-logo">TS</div>
       <div class="social-links">
-        <a href="https://github.com/thomas-sabu-cs" class="social-icon" target="_blank" rel="noopener"
-          aria-label="GitHub">
-          <i class="fab fa-github"></i>
+        <a href="https://github.com/thomas-sabu-cs" class="social-icon" target="_blank" rel="noopener" aria-label="GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i>
         </a>
-        <a href="https://www.linkedin.com/in/thomas-sabu" class="social-icon" target="_blank" rel="noopener"
-          aria-label="LinkedIn">
-          <i class="fab fa-linkedin"></i>
+        <a href="https://www.linkedin.com/in/thomas-sabu" class="social-icon" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
         </a>
-        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-icon" aria-label="Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
       </div>
       <p>&copy; 2025 Thomas Sabu. All rights reserved.</p>
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-  <script src="script.js"></script>
+  <!-- Scripts: defer to avoid blocking -->
+  <script defer src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script defer src="script.js"></script>
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
