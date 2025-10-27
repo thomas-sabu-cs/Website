@@ -1,28 +1,8 @@
 // Wait for DOM to load
 document.addEventListener('DOMContentLoaded', function() {
-  // Initialize particles.js
-  particlesJS("particles-js", {
-    particles: {
-      number: { value: 80, density: { enable: true, value_area: 800 } },
-      color: { value: "#4f8cff" },
-      shape: { type: "circle" },
-      opacity: { value: 0.5, random: false },
-      size: { value: 3, random: true },
-      line_linked: { enable: true, distance: 150, color: "#4f8cff", opacity: 0.4, width: 1 },
-      move: { enable: true, speed: 2, direction: "none", random: false, straight: false, out_mode: "out", bounce: false }
-    },
-    interactivity: {
-      detect_on: "canvas",
-      events: { 
-        onhover: { enable: true, mode: "repulse" }, 
-        onclick: { enable: true, mode: "push" } 
-      }
-    }
-  });
-
   // Dark mode toggle
   const darkModeToggle = document.getElementById('dark-mode-toggle');
-  
+
   // Favicons: switch set based on theme (light/dark)
   function setFaviconsByTheme(theme) {
     const dir = theme === 'light' ? 'light' : 'dark';
@@ -53,10 +33,10 @@ document.addEventListener('DOMContentLoaded', function() {
   const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
   const initialTheme = (localStorage.getItem('darkMode') === 'enabled') ? 'dark' : (systemDark ? 'dark' : 'light');
   setFaviconsByTheme(initialTheme);
-  
+
   darkModeToggle.addEventListener('click', function() {
     document.body.classList.toggle('dark-mode');
-    
+
     const isDark = document.body.classList.contains('dark-mode');
     if (isDark) {
       this.textContent = '☀️';
@@ -72,48 +52,50 @@ document.addEventListener('DOMContentLoaded', function() {
   // Mobile navigation
   const hamburger = document.querySelector('.hamburger');
   const navLinks = document.querySelector('.nav-links');
-  
+
   if (hamburger) {
-    hamburger.addEventListener('click', function() {
+    const toggleNav = () => {
       navLinks.classList.toggle('active');
       hamburger.classList.toggle('active');
-    });
+    };
+    hamburger.addEventListener('click', toggleNav);
+    hamburger.addEventListener('keypress', (e) => { if (e.key === 'Enter') toggleNav(); });
   }
 
   // Reveal animations on scroll
   const revealElements = document.querySelectorAll('.reveal');
-  
+
   function checkReveal() {
     const windowHeight = window.innerHeight;
     const revealPoint = 150;
-    
+
     revealElements.forEach(element => {
       const elementTop = element.getBoundingClientRect().top;
-      
+
       if (elementTop < windowHeight - revealPoint) {
         element.classList.add('visible');
       }
     });
   }
-  
+
   window.addEventListener('scroll', checkReveal);
   window.addEventListener('load', checkReveal);
-  
+
   // Project filters
   const filterButtons = document.querySelectorAll('.filter-btn');
   const projectCards = document.querySelectorAll('.project-card');
-  
+
   if (filterButtons.length > 0) {
     filterButtons.forEach(button => {
       button.addEventListener('click', function() {
         // Remove active class from all buttons
         filterButtons.forEach(btn => btn.classList.remove('active'));
-        
+
         // Add active class to clicked button
         this.classList.add('active');
-        
+
         const filter = this.getAttribute('data-filter');
-        
+
         projectCards.forEach(card => {
           if (filter === 'all' || card.getAttribute('data-category') === filter) {
             card.style.display = 'flex';
@@ -124,16 +106,13 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
   }
-  
-  // Form submission (you'll need to add backend functionality)
+
+  // Form submission (demo)
   const contactForm = document.querySelector('.contact-form');
-  
+
   if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
       e.preventDefault();
-      
-      // Here you would typically send the form data to a server
-      // For now, we'll just show an alert
       alert('Thank you for your message! This is a demo form - in a real website, your message would be sent to the website owner.');
     });
   }
@@ -185,6 +164,30 @@ document.addEventListener('DOMContentLoaded', function() {
       projectFrame.style.display = 'none';
       framePlaceholder.style.display = 'grid';
       framePlaceholder.textContent = 'Could not load the project. Check that GitHub Pages is enabled and the folder has an index.html';
+    });
+  }
+});
+
+// Defer decorative particles until after first paint
+window.addEventListener('load', function() {
+  if (window.particlesJS) {
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: "#4f8cff" },
+        shape: { type: "circle" },
+        opacity: { value: 0.5, random: false },
+        size: { value: 3, random: true },
+        line_linked: { enable: true, distance: 150, color: "#4f8cff", opacity: 0.4, width: 1 },
+        move: { enable: true, speed: 2, direction: "none", random: false, straight: false, out_mode: "out", bounce: false }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "repulse" },
+          onclick: { enable: true, mode: "push" }
+        }
+      }
     });
   }
 });
