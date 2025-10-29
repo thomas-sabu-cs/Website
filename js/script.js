@@ -170,24 +170,37 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Defer decorative particles until after first paint
 window.addEventListener('load', function() {
-  if (window.particlesJS) {
-    particlesJS("particles-js", {
-      particles: {
-        number: { value: 80, density: { enable: true, value_area: 800 } },
-        color: { value: "#4f8cff" },
-        shape: { type: "circle" },
-        opacity: { value: 0.5, random: false },
-        size: { value: 3, random: true },
-        line_linked: { enable: true, distance: 150, color: "#4f8cff", opacity: 0.4, width: 1 },
-        move: { enable: true, speed: 2, direction: "none", random: false, straight: false, out_mode: "out", bounce: false }
-      },
-      interactivity: {
-        detect_on: "canvas",
-        events: {
-          onhover: { enable: true, mode: "repulse" },
-          onclick: { enable: true, mode: "push" }
-        }
-      }
-    });
+  if (!window.particlesJS) {
+    console.warn('particlesJS is not available. Check that vendor/particles/particles.min.js is loaded before script.js');
+    return;
   }
+
+  // If your #particles-js has pointer-events: none or is covered by overlays,
+  // you can switch detect_on to 'window' for reliable hover/click detection.
+  const interactivityDetectTarget = 'canvas'; // change to 'window' if needed
+
+  particlesJS('particles-js', {
+    particles: {
+      number: { value: 80, density: { enable: true, value_area: 800 } },
+      color: { value: '#4f8cff' },
+      shape: { type: 'circle' },
+      opacity: { value: 0.5 },
+      size: { value: 3, random: true },
+      line_linked: { enable: true, distance: 150, color: '#4f8cff', opacity: 0.4, width: 1 },
+      move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
+    },
+    interactivity: {
+      detect_on: interactivityDetectTarget, // 'canvas' or 'window'
+      events: {
+        onhover: { enable: true, mode: 'repulse' },
+        onclick: { enable: true, mode: 'push' },
+        resize: true
+      },
+      modes: {
+        repulse: { distance: 120, duration: 0.4 },
+        push: { particles_nb: 4 }
+      }
+    },
+    retina_detect: true
+  });
 });
