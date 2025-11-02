@@ -199,7 +199,7 @@
           </div>
         </div>
       </div>
-    <!-- inserted Creative Coding iframe starting here -->
+    <!-- 
         <section class="project-viewer large reveal" data-category="creative">
       <h2 class="section-title">Creative Coding Viewer</h2>
 
@@ -230,11 +230,45 @@
       <p class="viewer-note">
         Note: Projects load from GitHub Pages. If you'd like to look at the backend for any of these projects, they will be in my GitHub (linked to this website).
       </p>
-    </section>
-    <!-- ending here -->  
+    </section> 
+      
+      -->  
+      
     </div>
   </main>
 
+  <section class="project-viewer reveal" data-category="creative" id="creativeViewer" hidden>
+  <h2 class="section-title">Creative Coding Viewer</h2>
+
+  <div class="viewer-controls">
+    <label for="projectSelect">Choose a project:</label>
+    <select id="projectSelect">
+      <option value="">-- Select a project --</option>
+      <option value="https://thomas-sabu-cs.github.io/Creative-Coding-Projects/Doge%20Game/">Doge Game</option>
+      <option value="https://thomas-sabu-cs.github.io/Creative-Coding-Projects/p5js%20Stuff/Perlin%20Flow%20Field">Perlin Flow Field</option>
+      <option value="https://thomas-sabu-cs.github.io/Creative-Coding-Projects/p5js%20Stuff/Spinning%20Squares">Spinning Squares</option>
+      <option value="https://thomas-sabu-cs.github.io/Creative-Coding-Projects/p5js%20Stuff/Problem%20Set%20Four">Problem Set 4</option>
+      <option value="https://thomas-sabu-cs.github.io/Creative-Coding-Projects/Ball%20Game%20Folder/">Ball Game</option>
+      <option value="https://thomas-sabu-cs.github.io/Creative-Coding-Projects/Unit%201/Animated%20Roller/">Animated Roller</option>
+    </select>
+
+    <a id="openExternal" class="animated-button secondary" href="#" target="_blank" rel="noopener" style="display:none;">
+      <i class="fas fa-external-link-alt" aria-hidden="true"></i> Open in new tab
+    </a>
+  </div>
+
+  <div class="viewer-frame-wrap">
+    <iframe id="projectFrame" title="Creative Coding Project Preview" loading="lazy" sandbox="allow-scripts allow-same-origin" referrerpolicy="no-referrer"></iframe>
+    <div id="framePlaceholder" class="frame-placeholder" aria-live="polite">
+      Select a project to preview it here.
+    </div>
+  </div>
+
+  <p class="viewer-note">
+    Note: Projects load from GitHub Pages. If you'd like to look at the backend for any of these projects, they will be in my GitHub (linked to this website).
+  </p>
+</section>
+  
   <footer class="glass-footer">
     <div class="footer-content">
       <div class="footer-logo">TS</div>
@@ -255,6 +289,7 @@
 </body>
 
 </html>
+
 
 
 
