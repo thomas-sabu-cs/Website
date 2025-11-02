@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Check for saved dark mode preference
   if (localStorage.getItem('darkMode') === 'enabled') {
     document.body.classList.add('dark-mode');
-    darkModeToggle.textContent = '☀️';
+    if (darkModeToggle) darkModeToggle.textContent = '☀️';
   }
 
   // Set initial favicons: prefer saved, else system preference
@@ -34,26 +34,28 @@ document.addEventListener('DOMContentLoaded', function() {
   const initialTheme = (localStorage.getItem('darkMode') === 'enabled') ? 'dark' : (systemDark ? 'dark' : 'light');
   setFaviconsByTheme(initialTheme);
 
-  darkModeToggle.addEventListener('click', function() {
-    document.body.classList.toggle('dark-mode');
+  if (darkModeToggle) {
+    darkModeToggle.addEventListener('click', function() {
+      document.body.classList.toggle('dark-mode');
 
-    const isDark = document.body.classList.contains('dark-mode');
-    if (isDark) {
-      this.textContent = '☀️';
-      localStorage.setItem('darkMode', 'enabled');
-      setFaviconsByTheme('dark');
-    } else {
-      this.textContent = '🌙';
-      localStorage.setItem('darkMode', null);
-      setFaviconsByTheme('light');
-    }
-  });
+      const isDark = document.body.classList.contains('dark-mode');
+      if (isDark) {
+        this.textContent = '☀️';
+        localStorage.setItem('darkMode', 'enabled');
+        setFaviconsByTheme('dark');
+      } else {
+        this.textContent = '🌙';
+        localStorage.removeItem('darkMode');
+        setFaviconsByTheme('light');
+      }
+    });
+  }
 
   // Mobile navigation
   const hamburger = document.querySelector('.hamburger');
   const navLinks = document.querySelector('.nav-links');
 
-  if (hamburger) {
+  if (hamburger && navLinks) {
     const toggleNav = () => {
       navLinks.classList.toggle('active');
       hamburger.classList.toggle('active');
@@ -71,7 +73,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     revealElements.forEach(element => {
       const elementTop = element.getBoundingClientRect().top;
-
       if (elementTop < windowHeight - revealPoint) {
         element.classList.add('visible');
       }
@@ -81,9 +82,26 @@ document.addEventListener('DOMContentLoaded', function() {
   window.addEventListener('scroll', checkReveal);
   window.addEventListener('load', checkReveal);
 
-  // Project filters
+  // Project filters + Creative Viewer visibility
   const filterButtons = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('.project-card');
+  const projectCards = document.querySelectorAll('.projects-grid .project-card');
+  const creativeViewer = document.getElementById('creativeViewer'); // section placed after </main>
+
+  function applyFilter(category) {
+    // Toggle project cards
+    projectCards.forEach(card => {
+      const cat = card.getAttribute('data-category');
+      const show = category === 'all' || category === cat;
+      // Use empty string to let CSS layout decide default (e.g., flex/grid)
+      card.style.display = show ? '' : 'none';
+    });
+
+    // Toggle Creative Viewer visibility (only for 'all' or 'creative')
+    if (creativeViewer) {
+      const shouldShowViewer = category === 'all' || category === 'creative';
+      creativeViewer.hidden = !shouldShowViewer;
+    }
+  }
 
   if (filterButtons.length > 0) {
     filterButtons.forEach(button => {
@@ -94,22 +112,22 @@ document.addEventListener('DOMContentLoaded', function() {
         // Add active class to clicked button
         this.classList.add('active');
 
+        // Apply selected filter
         const filter = this.getAttribute('data-filter');
-
-        projectCards.forEach(card => {
-          if (filter === 'all' || card.getAttribute('data-category') === filter) {
-            card.style.display = 'flex';
-          } else {
-            card.style.display = 'none';
-          }
-        });
+        applyFilter(filter);
       });
     });
+
+    // Initialize filter state to match the currently active button (defaults to 'all')
+    const activeBtn = document.querySelector('.filter-btn.active');
+    applyFilter(activeBtn ? activeBtn.dataset.filter : 'all');
+  } else {
+    // If no filters on this page, ensure viewer is hidden by default (if present)
+    if (creativeViewer) creativeViewer.hidden = true;
   }
 
   // Form submission (demo)
   const contactForm = document.querySelector('.contact-form');
-
   if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
       e.preventDefault();
@@ -117,13 +135,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Creative Coding Viewer
+  // Creative Coding Viewer wiring
   const projectSelect = document.getElementById('projectSelect');
   const projectFrame = document.getElementById('projectFrame');
   const framePlaceholder = document.getElementById('framePlaceholder');
   const openExternal = document.getElementById('openExternal');
 
-  if (projectSelect && projectFrame) {
+  if (projectSelect && projectFrame && framePlaceholder && openExternal) {
     // Restore last viewed project
     const savedProjectUrl = localStorage.getItem('cc_last_project_url');
     if (savedProjectUrl) {
@@ -134,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
         projectFrame.style.display = 'block';
         framePlaceholder.style.display = 'none';
         openExternal.href = savedProjectUrl;
-        openExternal.style.display = 'inline-block';
+        openExternal.style.display = 'inline-flex';
       }
     }
 
@@ -145,6 +163,7 @@ document.addEventListener('DOMContentLoaded', function() {
         projectFrame.style.display = 'none';
         framePlaceholder.style.display = 'grid';
         openExternal.style.display = 'none';
+        openExternal.href = '#';
         localStorage.removeItem('cc_last_project_url');
         return;
       }
@@ -154,8 +173,8 @@ document.addEventListener('DOMContentLoaded', function() {
       framePlaceholder.style.display = 'none';
       // External link
       openExternal.href = url;
-      openExternal.style.display = 'inline-block';
-      // Persist
+      openExternal.style.display = 'inline-flex';
+      // Persist selection
       localStorage.setItem('cc_last_project_url', url);
     });
 
