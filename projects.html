@@ -145,13 +145,14 @@
         <div class="project-content">
           <h3 id="pneumonia-detector">Chest X‑ray Pneumonia Detector</h3>
           <p>
-            Built a chest X‑ray classifier on the Kaggle Pneumonia dataset using a
-            DenseNet‑121 backbone in PyTorch to detect NORMAL vs PNEUMONIA cases.
-            Fine‑tuned the model with lung‑focused data preprocessing (central crops and
-            aggressive random resizing) to reduce reliance on shortcuts like text overlays
-            and shoulder borders. Integrated Grad‑CAM to generate pixel‑level
-            heatmaps, then deployed an interactive Gradio web app where users can upload
-            radiographs, view predictions, and inspect model attention over the lung fields.
+            Built a chest X‑ray pneumonia detector on the Kaggle Chest X‑Ray Pneumonia dataset
+            using a DenseNet‑121 backbone in PyTorch. Trained the model with lung‑focused
+            preprocessing (central crops and random resizing) to reduce reliance on shortcuts
+            such as text overlays and shoulder borders, and evaluated it on a 624‑image test set,
+            achieving <strong>~70% accuracy</strong> and <strong>AUC ≈ 0.89</strong> while maintaining
+            very high sensitivity to pneumonia cases. Integrated Grad‑CAM to generate
+            heatmaps that highlight the lung regions driving each prediction, and deployed
+            an interactive Gradio web app for exploring model outputs.
           </p>
           <div class="project-tags">
             <span>Python</span>
@@ -333,6 +334,7 @@
 </body>
 
 </html>
+
 
 
 
