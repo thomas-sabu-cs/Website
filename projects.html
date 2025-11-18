@@ -88,6 +88,59 @@
 
     <div class="projects-grid">
       <div class="project-card large reveal" data-category="ml">
+        <div class="project-image" style="background-image: url('photos/Project Background Images/pneumonia-detector-background-image.png')"></div>
+        <div class="project-content">
+          <h3 id="pneumonia-detector">Chest X‑ray Pneumonia Detector</h3>
+          <p>
+            Built a chest X‑ray pneumonia detector on the Kaggle Chest X‑Ray Pneumonia dataset
+            using a DenseNet‑121 backbone in PyTorch. Trained the model with lung‑focused
+            preprocessing (central crops and random resizing) to reduce reliance on shortcuts
+            such as text overlays and shoulder borders, and evaluated it on a 624‑image test set,
+            achieving <strong>~78% accuracy</strong> and <strong>AUC ≈ 0.89</strong> while maintaining
+            very high sensitivity to pneumonia cases. Integrated Grad‑CAM to generate
+            heatmaps that highlight the lung regions driving each prediction, and deployed
+            an interactive Gradio web app for exploring model outputs.
+          </p>
+          <div class="project-tags">
+            <span>Python</span>
+            <span>PyTorch</span>
+            <span>DenseNet‑121</span>
+            <span>Grad‑CAM</span>
+            <span>Gradio</span>
+            <span>Computer Vision</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/thomas-sabu-cs/Pneumonia-Detector"
+               class="project-link"
+               target="_blank"
+               rel="noopener"
+               aria-label="Pneumonia-Detector GitHub repository">
+              <i class="fab fa-github" aria-hidden="true"></i> GitHub
+            </a>
+            <a href="https://huggingface.co/spaces/tsabu154/pneumonia-detector"
+               class="project-link"
+               target="_blank"
+               rel="noopener"
+               aria-label="Pneumonia Detector live demo">
+              <i class="fas fa-external-link-alt" aria-hidden="true"></i> Live Demo
+            </a>
+            <!-- Optional: link to notebook or demo -->
+            <!--
+            <a href="YOUR_COLAB_OR_DEMO_URL"
+               class="project-link"
+               target="_blank"
+               rel="noopener"
+               aria-label="Pneumonia-Detector notebook demo">
+              <i class="fas fa-external-link-alt" aria-hidden="true"></i> Demo / Notebook
+            </a>
+            -->
+          </div>
+        </div>
+      </div>
+
+      
+      
+      <div class="project-card reveal" data-category="ml">
         <div class="project-image" style="background-image: url('photos/Project Background Images/my_sample_predictions.png')"></div>
         <div class="project-content">
           <h3>Handwritten Digit Recognition with CNN</h3>
@@ -140,56 +193,6 @@
       </div>
 
 
-      <div class="project-card large reveal" data-category="ml">
-        <div class="project-image" style="background-image: url('photos/Project Background Images/pneumonia-detector-background-image.png')"></div>
-        <div class="project-content">
-          <h3 id="pneumonia-detector">Chest X‑ray Pneumonia Detector</h3>
-          <p>
-            Built a chest X‑ray pneumonia detector on the Kaggle Chest X‑Ray Pneumonia dataset
-            using a DenseNet‑121 backbone in PyTorch. Trained the model with lung‑focused
-            preprocessing (central crops and random resizing) to reduce reliance on shortcuts
-            such as text overlays and shoulder borders, and evaluated it on a 624‑image test set,
-            achieving <strong>~78% accuracy</strong> and <strong>AUC ≈ 0.89</strong> while maintaining
-            very high sensitivity to pneumonia cases. Integrated Grad‑CAM to generate
-            heatmaps that highlight the lung regions driving each prediction, and deployed
-            an interactive Gradio web app for exploring model outputs.
-          </p>
-          <div class="project-tags">
-            <span>Python</span>
-            <span>PyTorch</span>
-            <span>DenseNet‑121</span>
-            <span>Grad‑CAM</span>
-            <span>Gradio</span>
-            <span>Computer Vision</span>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/thomas-sabu-cs/Pneumonia-Detector"
-               class="project-link"
-               target="_blank"
-               rel="noopener"
-               aria-label="Pneumonia-Detector GitHub repository">
-              <i class="fab fa-github" aria-hidden="true"></i> GitHub
-            </a>
-            <a href="https://huggingface.co/spaces/tsabu154/pneumonia-detector"
-               class="project-link"
-               target="_blank"
-               rel="noopener"
-               aria-label="Pneumonia Detector live demo">
-              <i class="fas fa-external-link-alt" aria-hidden="true"></i> Live Demo
-            </a>
-            <!-- Optional: link to notebook or demo -->
-            <!--
-            <a href="YOUR_COLAB_OR_DEMO_URL"
-               class="project-link"
-               target="_blank"
-               rel="noopener"
-               aria-label="Pneumonia-Detector notebook demo">
-              <i class="fas fa-external-link-alt" aria-hidden="true"></i> Demo / Notebook
-            </a>
-            -->
-          </div>
-        </div>
-      </div>
 
       <div class="project-card reveal" data-category="web">
         <div class="project-image" style="background-image: url('photos/Project Background Images/recipe-finder-image.png')"></div>
@@ -341,6 +344,7 @@
 </body>
 
 </html>
+
 
 
 
