@@ -187,4 +187,3 @@ These projects showcase experimentation with **p5.js**, animations, and interact
 - **particles.js** for the animated background effect.
 - All stock images and icons used for project visuals and backgrounds.
 - Course: **CISC 480 – Senior Capstone**, University of St. Thomas (Fall 2025), as part of the “Writing in the Discipline” and “Signature Work” requirements.
-```
