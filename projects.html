@@ -82,6 +82,7 @@
       <button class="filter-btn" data-filter="web">Web Development</button>
       <button class="filter-btn" data-filter="ml">Machine Learning</button>
       <button class="filter-btn" data-filter="creative">Creative Coding</button>
+      <button class="filter-btn" data-filter="systems">Systems</button>
       <button class="filter-btn" data-filter="other">Other</button>
     </div>
 
@@ -262,6 +263,159 @@
           </div>
         </div>
       </div>
+
+      <!-- Sentinel Stream -->
+      <div class="project-card large reveal" data-category="systems">
+        <div class="project-image" style="background-image: url('photos/Project Background Images/sentinel-stream-background.png')"></div>
+        <div class="project-content">
+          <h3>Sentinel Stream</h3>
+          <p>
+            Distributed telemetry pipeline for real-time metrics ingestion and time-series persistence.
+            Ingests high-throughput agent metrics via Redis Pub/Sub, persists to InfluxDB, and exposes
+            a REST API — all containerized with Docker Compose. Designed for low-latency, concurrent
+            data collection across distributed nodes.
+          </p>
+          <div class="project-tags">
+            <span>Go</span>
+            <span>Redis</span>
+            <span>InfluxDB</span>
+            <span>Docker</span>
+            <span>REST API</span>
+            <span>Distributed Systems</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/thomas-sabu-cs/sentinel-stream" class="project-link" target="_blank" rel="noopener" aria-label="Sentinel Stream GitHub repository">
+              <i class="fab fa-github" aria-hidden="true"></i> GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nexus Alloc -->
+      <div class="project-card reveal" data-category="systems">
+        <div class="project-image" style="background-image: url('photos/Project Background Images/nexus-alloc-background.png')"></div>
+        <div class="project-content">
+          <h3>Nexus Alloc</h3>
+          <p>
+            High-performance custom memory allocator in C/C++ exploring fragmentation reduction,
+            memory alignment, and allocation strategies. Designed for deterministic, GC-free
+            environments where predictable latency is critical.
+          </p>
+          <div class="project-tags">
+            <span>C</span>
+            <span>C++</span>
+            <span>Memory Management</span>
+            <span>Systems Programming</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/thomas-sabu-cs/nexus-alloc" class="project-link" target="_blank" rel="noopener" aria-label="Nexus Alloc GitHub repository">
+              <i class="fab fa-github" aria-hidden="true"></i> GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SkillGap AI Coach -->
+      <div class="project-card large reveal" data-category="web ml">
+        <div class="project-image" style="background-image: url('photos/Project Background Images/skillgap-ai-coach-background.png')"></div>
+        <div class="project-content">
+          <h3>SkillGap AI Coach</h3>
+          <p>
+            Full-stack AI-powered resume and job description analyzer. Runs a deterministic
+            baseline scoring engine with an optional LLM mode for deeper analysis. Features
+            persistent history, skill gap breakdowns, and actionable recommendations.
+            Fully containerized with Docker Compose.
+          </p>
+          <div class="project-tags">
+            <span>FastAPI</span>
+            <span>Next.js</span>
+            <span>PostgreSQL</span>
+            <span>Docker</span>
+            <span>Python</span>
+            <span>TypeScript</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/thomas-sabu-cs/skillgap-ai-coach" class="project-link" target="_blank" rel="noopener" aria-label="SkillGap AI Coach GitHub repository">
+              <i class="fab fa-github" aria-hidden="true"></i> GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Image Editor Pro -->
+      <div class="project-card reveal" data-category="web">
+        <div class="project-image" style="background-image: url('photos/Project Background Images/image-editor-pro-background.png')"></div>
+        <div class="project-content">
+          <h3>Image Editor Pro</h3>
+          <p>
+            Feature-rich desktop image editor built with PyQt6. Supports layers, filters,
+            brightness/contrast controls, and full undo/redo via the command pattern.
+            Clean MVC architecture with a polished dark-mode UI.
+          </p>
+          <div class="project-tags">
+            <span>Python</span>
+            <span>PyQt6</span>
+            <span>Pillow</span>
+            <span>NumPy</span>
+            <span>MVC</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/thomas-sabu-cs/image-editor-pro" class="project-link" target="_blank" rel="noopener" aria-label="Image Editor Pro GitHub repository">
+              <i class="fab fa-github" aria-hidden="true"></i> GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Transaction Monitor Service -->
+      <div class="project-card reveal" data-category="systems web">
+        <div class="project-image" style="background-image: url('photos/Project Background Images/transaction-monitor-background.png')"></div>
+        <div class="project-content">
+          <h3>Transaction Monitor Service</h3>
+          <p>
+            Spring Boot REST API for transaction risk monitoring. Includes a full test suite
+            with JUnit, CI pipeline via GitHub Actions, and clean layered architecture
+            following industry best practices.
+          </p>
+          <div class="project-tags">
+            <span>Java</span>
+            <span>Spring Boot</span>
+            <span>JUnit</span>
+            <span>REST API</span>
+            <span>CI/CD</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/thomas-sabu-cs/transaction-monitor-service" class="project-link" target="_blank" rel="noopener" aria-label="Transaction Monitor Service GitHub repository">
+              <i class="fab fa-github" aria-hidden="true"></i> GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Risk Decision Dashboard -->
+      <div class="project-card reveal" data-category="web">
+        <div class="project-image" style="background-image: url('photos/Project Background Images/risk-decision-dashboard-background.png')"></div>
+        <div class="project-content">
+          <h3>Risk Decision Dashboard</h3>
+          <p>
+            React/TypeScript dashboard for visualizing and exploring risk decision datasets.
+            Features Redux Toolkit for state management, dynamic filtering, and a clean
+            component-driven UI with dark mode support.
+          </p>
+          <div class="project-tags">
+            <span>React</span>
+            <span>TypeScript</span>
+            <span>Redux Toolkit</span>
+            <span>Vite</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/thomas-sabu-cs/risk-decision-dashboard" class="project-link" target="_blank" rel="noopener" aria-label="Risk Decision Dashboard GitHub repository">
+              <i class="fab fa-github" aria-hidden="true"></i> GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
     <!-- 
         <section class="project-viewer large reveal" data-category="creative">
       <h2 class="section-title">Creative Coding Viewer</h2>
@@ -352,28 +506,3 @@
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
