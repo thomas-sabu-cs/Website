@@ -3,8 +3,6 @@
 
 ## Overview
 
-This repository contains the source code for my personal portfolio website, created as part of my CISC 480 – Senior Capstone at the University of St. Thomas. The site serves as an online portfolio to showcase my work in **machine learning**, **web development**, and **creative coding**.
-
 The website is structured into several pages:
 
 - **Home** – Landing page with a brief introduction and navigation.
