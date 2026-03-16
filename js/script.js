@@ -187,39 +187,206 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// Defer decorative particles until after first paint
+// Starfield background (replacing particles.js)
+// Dark mode: black background with white stars
+// Light mode: white background with black stars
 window.addEventListener('load', function() {
-  if (!window.particlesJS) {
-    console.warn('particlesJS is not available. Check that vendor/particles/particles.min.js is loaded before script.js');
-    return;
+  const canvas = document.createElement('canvas');
+  canvas.id = 'starfield-canvas';
+  canvas.style.position = 'fixed';
+  canvas.style.inset = '0';
+  canvas.style.width = '100%';
+  canvas.style.height = '100%';
+  canvas.style.zIndex = '-1';
+  canvas.style.pointerEvents = 'none';
+  document.body.appendChild(canvas);
+
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  let width = 0;
+  let height = 0;
+  const scale = 1;
+  let stars = [];
+  let pointerX = null;
+  let pointerY = null;
+  let touchInput = false;
+  const velocity = { x: 0, y: 0, tx: 0, ty: 0, z: 0.0005 };
+  let frameId = 0;
+
+  const STAR_COLOR_DARK = '#ffffff';
+  const STAR_COLOR_LIGHT = '#000000';
+  const STAR_SIZE = 3;
+  const STAR_MIN_SCALE = 0.2;
+  const OVERFLOW_THRESHOLD = 50;
+  const STAR_COUNT = (window.innerWidth + window.innerHeight) / 8;
+
+  function currentTheme() {
+    return document.body.classList.contains('dark-mode') ? 'dark' : 'light';
   }
 
-  // If your #particles-js has pointer-events: none or is covered by overlays,
-  // you can switch detect_on to 'window' for reliable hover/click detection.
-  const interactivityDetectTarget = 'canvas'; // change to 'window' if needed
+  function placeStar(star) {
+    star.x = Math.random() * width;
+    star.y = Math.random() * height;
+  }
 
-  particlesJS('particles-js', {
-    particles: {
-      number: { value: 80, density: { enable: true, value_area: 800 } },
-      color: { value: '#4f8cff' },
-      shape: { type: 'circle' },
-      opacity: { value: 0.5 },
-      size: { value: 3, random: true },
-      line_linked: { enable: true, distance: 150, color: '#4f8cff', opacity: 0.4, width: 1 },
-      move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
-    },
-    interactivity: {
-      detect_on: interactivityDetectTarget, // 'canvas' or 'window'
-      events: {
-        onhover: { enable: true, mode: 'repulse' },
-        onclick: { enable: true, mode: 'push' },
-        resize: true
-      },
-      modes: {
-        repulse: { distance: 120, duration: 0.4 },
-        push: { particles_nb: 4 }
+  function recycleStar(star) {
+    let direction = 'z';
+    const vx = Math.abs(velocity.x);
+    const vy = Math.abs(velocity.y);
+
+    if (vx > 1 || vy > 1) {
+      let axis;
+      if (vx > vy) {
+        axis = Math.random() < vx / (vx + vy) ? 'h' : 'v';
+      } else {
+        axis = Math.random() < vy / (vx + vy) ? 'v' : 'h';
       }
-    },
-    retina_detect: true
+
+      if (axis === 'h') direction = velocity.x > 0 ? 'l' : 'r';
+      else direction = velocity.y > 0 ? 't' : 'b';
+    }
+
+    star.z = STAR_MIN_SCALE + Math.random() * (1 - STAR_MIN_SCALE);
+
+    if (direction === 'z') {
+      star.z = 0.1;
+      star.x = Math.random() * width;
+      star.y = Math.random() * height;
+    } else if (direction === 'l') {
+      star.x = -OVERFLOW_THRESHOLD;
+      star.y = height * Math.random();
+    } else if (direction === 'r') {
+      star.x = width + OVERFLOW_THRESHOLD;
+      star.y = height * Math.random();
+    } else if (direction === 't') {
+      star.x = width * Math.random();
+      star.y = -OVERFLOW_THRESHOLD;
+    } else if (direction === 'b') {
+      star.x = width * Math.random();
+      star.y = height + OVERFLOW_THRESHOLD;
+    }
+  }
+
+  function resize() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+
+    if (!stars.length) {
+      stars = [];
+      for (let i = 0; i < STAR_COUNT; i++) {
+        const star = { x: 0, y: 0, z: STAR_MIN_SCALE + Math.random() * (1 - STAR_MIN_SCALE) };
+        placeStar(star);
+        stars.push(star);
+      }
+    } else {
+      stars.forEach(placeStar);
+    }
+  }
+
+  function movePointer(x, y) {
+    if (typeof pointerX === 'number' && typeof pointerY === 'number') {
+      const ox = x - pointerX;
+      const oy = y - pointerY;
+      velocity.tx = velocity.tx + (ox / (8 * scale)) * (touchInput ? 1 : -1);
+      velocity.ty = velocity.ty + (oy / (8 * scale)) * (touchInput ? 1 : -1);
+    }
+    pointerX = x;
+    pointerY = y;
+  }
+
+  function onMouseMove(event) {
+    touchInput = false;
+    movePointer(event.clientX, event.clientY);
+  }
+
+  function onTouchMove(event) {
+    touchInput = true;
+    const t = event.touches[0];
+    movePointer(t.clientX, t.clientY);
+    event.preventDefault();
+  }
+
+  function onMouseLeave() {
+    pointerX = null;
+    pointerY = null;
+  }
+
+  function update() {
+    velocity.tx *= 0.96;
+    velocity.ty *= 0.96;
+    velocity.x += (velocity.tx - velocity.x) * 0.8;
+    velocity.y += (velocity.ty - velocity.y) * 0.8;
+
+    stars.forEach((star) => {
+      star.x += velocity.x * star.z;
+      star.y += velocity.y * star.z;
+      star.x += (star.x - width / 2) * velocity.z * star.z;
+      star.y += (star.y - height / 2) * velocity.z * star.z;
+      star.z += velocity.z;
+
+      if (
+        star.x < -OVERFLOW_THRESHOLD ||
+        star.x > width + OVERFLOW_THRESHOLD ||
+        star.y < -OVERFLOW_THRESHOLD ||
+        star.y > height + OVERFLOW_THRESHOLD
+      ) {
+        recycleStar(star);
+      }
+    });
+  }
+
+  function render() {
+    const theme = currentTheme();
+    const starColor = theme === 'light' ? STAR_COLOR_LIGHT : STAR_COLOR_DARK;
+    const bgColor = theme === 'light' ? '#ffffff' : '#000000';
+
+    ctx.fillStyle = bgColor;
+    ctx.fillRect(0, 0, width, height);
+
+    stars.forEach((star) => {
+      ctx.beginPath();
+      ctx.lineCap = 'round';
+      ctx.lineWidth = STAR_SIZE * star.z * scale;
+      ctx.globalAlpha = 0.5 + 0.5 * Math.random();
+      ctx.strokeStyle = starColor;
+
+      ctx.beginPath();
+      ctx.moveTo(star.x, star.y);
+
+      let tailX = velocity.x * 2;
+      let tailY = velocity.y * 2;
+      if (Math.abs(tailX) < 0.1) tailX = 0.5;
+      if (Math.abs(tailY) < 0.1) tailY = 0.5;
+
+      ctx.lineTo(star.x + tailX, star.y + tailY);
+      ctx.stroke();
+    });
+  }
+
+  function step() {
+    update();
+    render();
+    frameId = requestAnimationFrame(step);
+  }
+
+  resize();
+  step();
+
+  window.addEventListener('resize', resize);
+  window.addEventListener('mousemove', onMouseMove);
+  window.addEventListener('touchmove', onTouchMove, { passive: false });
+  window.addEventListener('touchend', onMouseLeave);
+  document.addEventListener('mouseleave', onMouseLeave);
+
+  window.addEventListener('beforeunload', function() {
+    cancelAnimationFrame(frameId);
+    window.removeEventListener('resize', resize);
+    window.removeEventListener('mousemove', onMouseMove);
+    window.removeEventListener('touchmove', onTouchMove);
+    window.removeEventListener('touchend', onMouseLeave);
+    document.removeEventListener('mouseleave', onMouseLeave);
   });
 });
