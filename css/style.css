@@ -919,6 +919,22 @@ img {
   border-color: var(--accent-color);
 }
 
+.form-status {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  min-height: 1.2em;
+  color: var(--text-color);
+  opacity: 0.9;
+}
+
+.form-status.success {
+  color: #2e7d32;
+}
+
+.form-status.error {
+  color: #c62828;
+}
+
 /* Animations */
 .page-transition {
   animation: fadeIn 0.8s ease-in-out;

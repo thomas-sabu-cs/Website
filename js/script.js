@@ -126,12 +126,50 @@ document.addEventListener('DOMContentLoaded', function() {
     if (creativeViewer) creativeViewer.hidden = true;
   }
 
-  // Form submission (demo)
-  const contactForm = document.querySelector('.contact-form');
+  // Contact form submission (real, via Formspree)
+  const contactForm = document.getElementById('contact-form');
+  const formStatus = document.getElementById('form-status');
   if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
+    contactForm.addEventListener('submit', async function(e) {
       e.preventDefault();
-      alert('Thank you for your message! This is a demo form - in a real website, your message would be sent to the website owner.');
+
+      if (!contactForm.action || contactForm.action.includes('your-form-id-here')) {
+        if (formStatus) {
+          formStatus.textContent = 'Form backend not configured yet.';
+        }
+        return;
+      }
+
+      if (formStatus) {
+        formStatus.textContent = 'Sending...';
+      }
+
+      const data = new FormData(contactForm);
+
+      try {
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          body: data,
+          headers: {
+            Accept: 'application/json',
+          },
+        });
+
+        if (response.ok) {
+          if (formStatus) {
+            formStatus.textContent = 'Thanks for your message! I will get back to you soon.';
+          }
+          contactForm.reset();
+        } else {
+          if (formStatus) {
+            formStatus.textContent = 'Oops, something went wrong. Please try again later.';
+          }
+        }
+      } catch (err) {
+        if (formStatus) {
+          formStatus.textContent = 'Network error. Please check your connection and try again.';
+        }
+      }
     });
   }
 
